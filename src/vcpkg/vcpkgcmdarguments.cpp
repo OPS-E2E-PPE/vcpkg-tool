@@ -14,6 +14,7 @@
 namespace
 {
     // PPE semantic-version release comparison validation marker.
+    // PPE calendar-version transition validation marker.
     using namespace vcpkg;
 
     struct CIRecord
