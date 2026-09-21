@@ -13,6 +13,7 @@
 
 namespace
 {
+    // PPE semantic-version release comparison validation marker.
     using namespace vcpkg;
 
     struct CIRecord
