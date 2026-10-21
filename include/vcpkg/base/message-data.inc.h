@@ -1410,6 +1410,10 @@ DECLARE_MESSAGE(FindVersionArtifactsOnly,
                 (),
                 "'--version', 'vcpkg search', and 'vcpkg find port' are command lines that must not be localized",
                 "--version can't be used with vcpkg search or vcpkg find port")
+DECLARE_MESSAGE(NoPortsMatchedSearch,
+                (msg::value),
+                "{value} is a search term the user supplied to 'vcpkg find port'",
+                "No ports matched \"{value}\".")
 DECLARE_MESSAGE(FieldKindDidNotHaveExpectedValue,
                 (msg::expected, msg::actual),
                 "{expected} is a list of literal kinds the user must type, separated by commas, {actual} is what "

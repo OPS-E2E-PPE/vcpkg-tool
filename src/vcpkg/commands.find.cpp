@@ -147,6 +147,7 @@ namespace vcpkg
             const auto contained_in = [filter_str](StringView haystack) {
                 return Strings::case_insensitive_ascii_contains(haystack, *filter_str);
             };
+            bool found_any_match = false;
             for (const auto& source_control_file : source_paragraphs)
             {
                 auto&& sp = *source_control_file->core_paragraph;
@@ -159,6 +160,7 @@ namespace vcpkg
 
                 if (found_match)
                 {
+                    found_any_match = true;
                     do_print(sp, full_description);
                 }
 
@@ -177,9 +179,15 @@ namespace vcpkg
 
                     if (found_match_for_feature)
                     {
+                        found_any_match = true;
                         do_print(sp.name, *feature_paragraph, full_description);
                     }
                 }
+            }
+
+            if (!found_any_match)
+            {
+                msg::println(msg::format_warning(msgNoPortsMatchedSearch, msg::value = *filter_str));
             }
         }
         else if (enable_json)
